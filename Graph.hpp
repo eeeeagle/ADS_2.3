@@ -34,7 +34,7 @@ public:
 
     void add_vertex(const T_Vertex& vertex)
     {
-        if (!contains<T_Vertex>(vertex))
+        if (!contains(vertex))
             vertex_list.push_back(vertex);
     }
 
