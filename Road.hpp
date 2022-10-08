@@ -17,8 +17,8 @@ class Road
 	size_t	surface_type;
 	bool	toll_road;
 public:
-	Road(const double& distance, const size_t& type = 0, const bool toll_road = false)
-		: surface_type(type), toll_road(toll_road)
+	Road(const double& distance, const size_t& surface_type = 0, const bool toll_road = false)
+		: surface_type(surface_type), toll_road(toll_road)
 	{
 		if (distance <= 0.0)
 			throw "Distance can't be below 0.";

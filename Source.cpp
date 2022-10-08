@@ -6,6 +6,5 @@ int main()
 {
 	Graph<Settlement, Road> graph;
 
-
 	return 0;
 }
