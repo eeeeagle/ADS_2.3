@@ -1,9 +1,13 @@
 #pragma once
 #ifndef SETTLEMENT
 #define SETTLEMENT
-#include <iostream>
 
-class Settlement
+#include <iostream>
+#include <iomanip>
+#include "Vertex.hpp"
+
+
+class Settlement : public Vertex
 {
 	std::string name;
 	size_t		population;
@@ -32,5 +36,20 @@ public:
 	{
 		return !(*this == other);
 	}
+
+	friend std::ostream& operator <<(std::ostream& os, const Settlement& obj);
 };
+
+std::ostream& operator <<(std::ostream& os, const Settlement& obj)
+{
+	/*
+	os << std::setw(5) << obj.id;
+	os << std::setw(20) << obj.name;
+	os << std::setw(15) << obj.population;
+	*/
+
+	os << '[' << obj.id << "] " << obj.name << std::endl;
+	os << "Population: " << obj.population << std::endl;
+	return os;
+}
 #endif

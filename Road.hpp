@@ -1,9 +1,11 @@
 #pragma once
 #ifndef ROAD
 #define ROAD
-#include <iostream>
 
-class Road
+#include <iostream>
+#include "Edge.hpp"
+
+class Road : public Edge
 {
 	enum Surface_Type
 	{
@@ -13,17 +15,14 @@ class Road
 		SAND
 	};
 
-	double	distance;
 	size_t	surface_type;
 	bool	toll_road;
+	double	distance;
+
 public:
 	Road(const double& distance, const size_t& surface_type = 0, const bool toll_road = false)
-		: surface_type(surface_type), toll_road(toll_road)
-	{
-		if (distance <= 0.0)
-			throw "Distance can't be below 0.";
-		this->distance = distance;
-	}
+		: surface_type(surface_type), toll_road(toll_road), distance(distance)
+	{}
 
 	double get_distence() const
 	{
@@ -49,6 +48,18 @@ public:
 	bool is_toll() const
 	{
 		return toll_road;
+	}
+
+	std::ostream& operator <<(std::ostream& os) const
+	{
+		os << '[' << id << "] " << get_surface_type();
+		if (toll_road)
+		{
+			os << ", Toll road";
+		}
+		os << std::endl;
+		os << "Distance: " << distance << std::endl;
+		return os;
 	}
 };
 #endif
